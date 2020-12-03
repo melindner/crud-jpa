@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>SIGREF - Tela de Pesquisa - empresa</title>
+</head>
+<body>
+    <div class="container">
+        <header class="row my-r">
+       
+            <a href="" class="logo col-2">
+                <img src="/img/logo.jpg" alt="">>
+            </a>
+            <div class="col-10 d-flex flex-column align-items-right justify-content-right">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                     <div class="collapse navbar-collapse" id="navbarNav">
+                       <ul class="navbar-nav ml-auto">
+                         <li class="nav-item active">
+                             <a class="nav-link" href="#">HOME <span class="sr-only"></span></a>
+                         </li>
+                         <li class="nav-item active">
+                            <a class="nav-link" href="/">CADASTRO <span class="sr-only">(current)</span></a>
+                         </li>
+                       </ul>
+                     </div>
+                 </nav>
+         </div>
+    </header>
+    <h1>Pesquisar empresa</h1>
+    <form method="POST" action="/pesquisar-empresa">
+        <div>
+            <label class="col-2" for="nome"></label>
+            <input class="col-10" type="text" name="nome" id="nome" th:value="${nome}" placeholder="Digite um nome..."/>
+           
+            <button type="submit" class="btn btn-secondary" value="Pesquisar"> Pesquisar <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+              </svg>
+            </button>
+        </div>
+        </form>
+        <div>
+          
+            <div class="list-group" th:if="${listaEmpresa !=null}">
+                <div style="margin: 15px;" class="list-group-item-action" th:each="empresa : ${listaEmpresa}">
+                    <a type="button" class="list-group-item-action" th:href="@{/detalhes-empresa/{id}(id=${empresa.id})}" th:text=${empresa.nome}></a>
+                </div>
+                
+            </div>
+       
+            
+        </div>
+        <a style = "margin-top: 20px;"class="btn btn-outline-dark"type="button"href="/tela-empresa">Voltar</a>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+</body>
+</html>
